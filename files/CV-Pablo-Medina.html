@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pablo Medina — CV</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 9.5pt;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: #1A1814;
+      background: white;
+      line-height: 1.5;
+    }
+
+    .cv {
+      width: 210mm;
+      height: 297mm;
+      overflow: hidden;
+      margin: 0 auto;
+      padding: 10mm 12mm;
+      background: white;
+    }
+
+    @media screen {
+      body {
+        background: #EDEBE7;
+        padding: 40px 0 80px;
+      }
+
+      .cv {
+        box-shadow: 0 8px 48px rgba(0, 0, 0, 0.13);
+        height: auto;
+        overflow: visible;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 10mm 12mm;
+      }
+
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .cv {
+        width: 100%;
+        padding: 0;
+        box-shadow: none;
+        height: auto;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+    }
+
+    /* ════════════════════
+       HEADER
+       ════════════════════ */
+    .cv-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 6mm;
+      align-items: center;
+      padding-bottom: 3.5mm;
+      border-bottom: 1.5px solid #1A1814;
+      margin-bottom: 3.5mm;
+    }
+
+    /* Photo */
+    .cv-photo {
+      width: 24mm;
+      height: 24mm;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 1.5px solid rgba(26, 24, 20, 0.12);
+      background: #E0DAD0;
+    }
+
+    .cv-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* Placeholder shown when no photo */
+    .cv-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10pt;
+      color: #AAAAAA;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    .cv-name {
+      font-size: 18pt;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #1A1814;
+      line-height: 1.1;
+      margin-bottom: 1.5mm;
+    }
+
+    .cv-tagline {
+      font-size: 8.5pt;
+      color: #5A5650;
+      margin-bottom: 2mm;
+    }
+
+    .cv-contact {
+      font-size: 8pt;
+      color: #5A5650;
+    }
+
+    .cv-contact a {
+      color: #1A1814;
+      text-decoration: none;
+    }
+
+    .cv-sep {
+      color: #BBBBBB;
+      margin: 0 5px;
+    }
+
+    /* ════════════════════
+       SECTIONS
+       ════════════════════ */
+    .cv-section {
+      margin-bottom: 3.5mm;
+    }
+
+    .cv-section-title {
+      font-size: 7pt;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #2D5A3D;
+      border-bottom: 1px solid #2D5A3D;
+      padding-bottom: 1mm;
+      margin-bottom: 2.5mm;
+    }
+
+    /* ── Profile ── */
+    .cv-profile {
+      font-size: 8.5pt;
+      color: #3A3830;
+      line-height: 1.6;
+    }
+
+    /* ── Experience ── */
+    .exp-block {
+      margin-bottom: 2.5mm;
+      padding-bottom: 2.5mm;
+      border-bottom: 1px solid rgba(26, 24, 20, 0.07);
+    }
+
+    .exp-block:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .exp-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .exp-role {
+      font-size: 9pt;
+      font-weight: 700;
+      color: #1A1814;
+    }
+
+    .exp-dates {
+      font-size: 8pt;
+      color: #8A8580;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .exp-sub {
+      font-size: 8pt;
+      color: #2D5A3D;
+      font-weight: 500;
+      margin-bottom: 1.5mm;
+    }
+
+    .exp-list {
+      margin: 0;
+      padding-left: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 1mm;
+    }
+
+    .exp-list li {
+      font-size: 8.5pt;
+      color: #3A3830;
+      line-height: 1.5;
+    }
+
+    /* ── Two-column layout for Education + Skills + Certs + Languages ── */
+    /* ATS-safe: this is just visual. All text is in reading order in the HTML. */
+    .cv-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5mm;
+      align-items: start;
+    }
+
+    /* ── Education ── */
+    .edu-block {
+      margin-bottom: 2mm;
+    }
+
+    .edu-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .edu-degree {
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #1A1814;
+      line-height: 1.3;
+    }
+
+    .edu-meta {
+      font-size: 8pt;
+      color: #5A5650;
+    }
+
+    .edu-meta span {
+      color: #2D5A3D;
+      font-weight: 500;
+    }
+
+    /* ── Skills ── */
+    .skills-group {
+      margin-bottom: 2mm;
+    }
+
+    .skills-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .skills-title {
+      font-size: 8pt;
+      font-weight: 700;
+      color: #1A1814;
+      margin-bottom: 0.5mm;
+    }
+
+    .skills-text {
+      font-size: 8pt;
+      color: #3A3830;
+      line-height: 1.5;
+    }
+
+    /* ── Certs ── */
+    .cert-list {
+      margin: 0;
+      padding-left: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 1mm;
+    }
+
+    .cert-list li {
+      font-size: 8pt;
+      color: #3A3830;
+      line-height: 1.4;
+    }
+
+    /* ── Languages ── */
+    .lang-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1mm;
+    }
+
+    .lang-item {
+      font-size: 8.5pt;
+      color: #3A3830;
+    }
+
+    .lang-item strong {
+      color: #1A1814;
+    }
+
+    /* ── Responsive — photo below header on small screens ── */
+    @media screen and (max-width: 600px) {
+      .cv-header {
+        grid-template-columns: 1fr;
+      }
+
+      .cv-photo {
+        width: 18mm;
+        height: 18mm;
+        order: -1;
+        /* photo above name on mobile */
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div class="cv">
+
+    <!-- HEADER -->
+    <header class="cv-header">
+
+      <div>
+        <h1 class="cv-name">Pablo Medina Prados</h1>
+        <p class="cv-tagline">Multidisciplinary Digital Creative — UX/UI Design · Audiovisual Production · Content
+          Creation</p>
+        <div class="cv-contact">
+          <a href="mailto:pablo.medpra@gmail.com">pablo.medpra@gmail.com</a>
+          <span class="cv-sep">|</span>
+          Open to relocation
+          <span class="cv-sep">|</span>
+          pablo-medina.design
+          <span class="cv-sep">|</span>
+          linkedin.com/in/pablo-medina
+        </div>
+      </div>
+
+    </header>
+
+
+    <!-- PROFILE -->
+    <section class="cv-section">
+      <h2 class="cv-section-title">Profile</h2>
+      <p class="cv-profile">
+        Digital creative with experience in UX/UI design, audiovisual production, and content creation. Comfortable
+        across the full production pipeline — from concept and interface design to filming, editing, and delivery. I
+        work well under deadline pressure, adapt to different team formats, and bring both creative and technical skills
+        to every project. Seeking a full-time role in UX/UI design, digital design, or creative audiovisual production.
+      </p>
+    </section>
+
+
+    <!-- EXPERIENCE -->
+    <section class="cv-section">
+      <h2 class="cv-section-title">Experience</h2>
+
+      <div class="exp-block">
+        <div class="exp-header-row">
+          <span class="exp-role">Audiovisual Production Intern</span>
+          <span class="exp-dates">2023 — Granada CF · Internship · Granada, Spain</span>
+        </div>
+        <ul class="exp-list">
+          <li>Produced and edited video and photo content for matchdays, press conferences, and club campaigns across
+            men's, women's, and academy teams.</li>
+          <li>Delivered social media assets — match highlights, reels, and promotional pieces — within tight post-match
+            turnaround windows.</li>
+        </ul>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-header-row">
+          <span class="exp-role">UI Designer & Creative Collaborator</span>
+          <span class="exp-dates">2025 — Pinta: Coloring Studio · Collaborative Project · Remote</span>
+        </div>
+        <ul class="exp-list">
+          <li>Contributed UI design and visual direction for a published creative iOS app — Figma concepts, interactive
+            prototyping, and early user testing.</li>
+          <li>Designed visual assets and templates for in-app content and supporting social media communication.</li>
+        </ul>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-header-row">
+          <span class="exp-role">Audiovisual Technician Intern</span>
+          <span class="exp-dates">2021 — Universidad de Granada · Internship · Granada, Spain</span>
+        </div>
+        <ul class="exp-list">
+          <li>Filmed, edited, and produced audiovisual content for cultural events, academic projects, and institutional
+            communication.</li>
+          <li>Managed and catalogued the audiovisual archive of the Vice-Rectorate's communication unit.</li>
+        </ul>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-header-row">
+          <span class="exp-role">Community Manager</span>
+          <span class="exp-dates">2020 — Granabip, Asociación de Bipolares · Internship · Granada, Spain</span>
+        </div>
+        <ul class="exp-list">
+          <li>Created visual assets and managed social media content for mental health awareness campaigns and digital
+            events.</li>
+        </ul>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-header-row">
+          <span class="exp-role">Videographer & Photography Assistant</span>
+          <span class="exp-dates">Freelance — César Zarcos · Granada, Spain</span>
+        </div>
+        <ul class="exp-list">
+          <li>Assisted with video and photo coverage for weddings and live events — capture, setup, and post-production
+            editing.</li>
+        </ul>
+      </div>
+
+    </section>
+
+
+    <!-- BOTTOM GRID: Education · Skills · Certs · Languages -->
+    <div class="cv-bottom">
+
+      <!-- LEFT: Education + Skills -->
+      <div>
+
+        <section class="cv-section">
+          <h2 class="cv-section-title">Education</h2>
+
+          <div class="edu-block">
+            <div class="edu-degree">Master's in UX/UI Design and Web Development</div>
+            <div class="edu-meta"><span>La Hauss Escuela Online</span> · 2025</div>
+          </div>
+
+          <div class="edu-block">
+            <div class="edu-degree">Master's in New Interactive Media and Multimedia Journalism</div>
+            <div class="edu-meta"><span>Universidad de Granada</span> · 2023</div>
+          </div>
+
+          <div class="edu-block">
+            <div class="edu-degree">Bachelor's Degree in Audiovisual Communication</div>
+            <div class="edu-meta"><span>Universidad de Granada</span> · 2022</div>
+          </div>
+        </section>
+
+        <section class="cv-section">
+          <h2 class="cv-section-title">Skills</h2>
+
+          <div class="skills-group">
+            <div class="skills-title">Design & UX</div>
+            <p class="skills-text">Figma, UI Design, UX Design, Wireframing, Prototyping, User Testing, Design Systems,
+              iOS Design</p>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-title">Audiovisual</div>
+            <p class="skills-text">Premiere Pro, Final Cut Pro, After Effects, DaVinci Resolve, Lightroom, Video
+              Editing, Colour Grading, Photography</p>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-title">Design & Content</div>
+            <p class="skills-text">Photoshop, Illustrator, Affinity Suite, Canva, Social Media, HTML, CSS</p>
+          </div>
+
+        </section>
+
+      </div>
+
+      <!-- RIGHT: Certifications + Languages -->
+      <div>
+
+        <section class="cv-section">
+          <h2 class="cv-section-title">Certifications & Training</h2>
+          <ul class="cert-list">
+            <li>Google UX Design Professional Certificate</li>
+            <li>DigitalizArte Program — Digital Skills</li>
+            <li>GATC-SFC Audiovisual and Camera Training</li>
+            <li>On-camera Communication Training</li>
+            <li>Adobe Photoshop — Beginner to Advanced</li>
+            <li>Adobe Lightroom — Image Retouching</li>
+          </ul>
+        </section>
+
+        <section class="cv-section">
+          <h2 class="cv-section-title">Languages</h2>
+          <div class="lang-list">
+            <div class="lang-item"><strong>Spanish</strong> — Native</div>
+            <div class="lang-item"><strong>English</strong> — Professional working proficiency</div>
+            <div class="lang-item"><strong>French</strong> — Basic (A2)</div>
+          </div>
+          <div class="lang-item"><strong>Dutch</strong> — Basic (A1)</div>
+      </div>
+      </section>
+
+    </div>
+
+  </div><!-- /cv-bottom -->
+
+  </div><!-- /cv -->
+
+</body>
+
+</html>
