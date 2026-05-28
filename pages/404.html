@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page not found · Pablo Medina</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .e404-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--nav-h) + 4rem) clamp(1.5rem, 5vw, 3rem) 6rem;
+    }
+
+    .e404-inner {
+      max-width: 560px;
+      width: 100%;
+    }
+
+    .e404-num {
+      font-family: var(--serif);
+      font-size: clamp(7rem, 20vw, 14rem);
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+      color: var(--ink);
+      margin-bottom: 0.1em;
+      /* Outline text effect */
+      -webkit-text-stroke: 2px var(--ink);
+      color: transparent;
+    }
+
+    .e404-num em {
+      font-style: italic;
+      -webkit-text-stroke: 2px var(--accent-2);
+      color: transparent;
+    }
+
+    .e404-divider {
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin: 2rem 0;
+    }
+
+    .e404-title {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+      line-height: 1.15;
+    }
+
+    .e404-desc {
+      font-size: 1rem;
+      color: var(--ink-2);
+      font-weight: 300;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      max-width: 400px;
+    }
+
+    .e404-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .e404-links {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .e404-link {
+      font-size: 0.85rem;
+      color: var(--ink-3);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .e404-link:hover { color: var(--ink); }
+    .e404-link::before {
+      content: '';
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--accent-2);
+    }
+
+    /* Footer */
+    .e404-footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 1.5rem clamp(1.5rem, 5vw, 3rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .e404-footer-copy { font-size: 0.78rem; color: var(--ink-3); }
+    .e404-footer-name { font-family: var(--serif); font-size: 0.95rem; color: var(--ink-3); }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .e404-links { gap: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html" class="nav-logo">Pablo Medina</a>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="../index.html#contact" class="nav-cta">Get in touch</a></li>
+  </ul>
+  <a href="../index.html" class="nav-back">
+    <span>←</span> Home
+  </a>
+</nav>
+
+
+<!-- 404 CONTENT -->
+<div class="e404-wrap">
+  <div class="e404-inner">
+
+    <div class="e404-num">4<em>0</em>4</div>
+
+    <div class="e404-divider"></div>
+
+    <h1 class="e404-title">Page not found</h1>
+    <p class="e404-desc">
+      This page doesn't exist or has been moved. It happens. Head back home or pick somewhere else to go.
+    </p>
+
+    <div class="e404-actions">
+      <a href="../index.html" class="btn-primary">← Back to home</a>
+      <a href="../pages/work.html" class="btn-ghost">See my work <span>→</span></a>
+    </div>
+
+    <div class="e404-links">
+
+      <a href="../pages/projects/granadacf.html" class="e404-link">Granada
+        CF      </a>
+      <a href="../pages/projects/ugr.html" class="e404-link">University of Granada</a>
+      <a href="../pages/projects/pinta.html" class="e404-link">Pinta: Coloring Studio
+      </a>
+      <a href="../index.html#contact" class="e404-link">Contact</a>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<div class="e404-footer">
+  <span class="e404-footer-copy">© 2026 Pablo Medina. All rights reserved.</span>
+  <span class="e404-footer-name">Designed &amp; built with care.</span>
+</div>
+
+
+</body>
+</html>
