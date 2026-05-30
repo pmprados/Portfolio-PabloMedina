@@ -2855,6 +2855,18 @@ footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.07); p
 }
 .wp-row:hover .wp-bg-img { transform: scale(1.04); }
 
+/* Direct <img> inside wp-visual — replaces mockup, same behaviour */
+.wp-visual > img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 0;
+  transition: transform 0.6s ease;
+}
+.wp-row:hover .wp-visual > img { transform: scale(1.04); }
+
 /* Fallback gradient when no image */
 .wp-bg-fallback {
   position: absolute;
@@ -2870,7 +2882,7 @@ footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.07); p
   position: absolute;
   inset: 0;
   background: linear-gradient(to right, rgba(0,0,0,0.25), transparent);
-  z-index: 1;
+  z-index: 2;
 }
 .wp-row.reverse .wp-visual-overlay {
   background: linear-gradient(to left, rgba(0,0,0,0.25), transparent);
@@ -2908,10 +2920,10 @@ footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.07); p
   font-family: var(--serif);
   font-size: 5rem;
   line-height: 1;
-  color: rgba(255,255,255,0.06);
+  color: rgba(255, 255, 255, 0.568);
   letter-spacing: -0.04em;
   user-select: none;
-  z-index: 1;
+  z-index: 3;
 }
 .wp-row.reverse .wp-num { left: auto; right: 1.5rem; }
 
@@ -3048,49 +3060,6 @@ footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.07); p
 }
 .work-site-footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
 .work-site-footer-name { font-family: var(--serif); font-size: 0.95rem; color: rgba(255,255,255,0.25); }
-
-.about-hero-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:5rem;
-}
-
-.about-hero-content{
-  flex:1;
-}
-
-.about-hero-image{
-  flex-shrink:0;
-}
-
-.about-hero-image img{
-  width:320px;
-  height:320px;
-  object-fit:cover;
-  border-radius:50%;
-  border:1px solid rgba(0,0,0,.08);
-  box-shadow:0 20px 60px rgba(0,0,0,.12);
-}
-
-/* MOBILE */
-
-@media (max-width:900px){
-
-  .about-hero-inner{
-    flex-direction:column-reverse;
-    text-align:center;
-  }
-
-  .about-hero-image img{
-    width:220px;
-    height:220px;
-  }
-
-  .about-hero-actions{
-    justify-content:center;
-  }
-}
 
 /* ── Responsive ─────────────────────────────── */
 @media (max-width: 900px) {
