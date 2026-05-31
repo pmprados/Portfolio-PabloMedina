@@ -4874,7 +4874,7 @@ footer {
   transform: scale(1.04);
 }
 
-/* Direct <img> inside wp-visual — replaces mockup, same behaviour */
+
 .wp-visual>img {
   position: absolute;
   inset: 0;
@@ -4890,7 +4890,6 @@ footer {
   transform: scale(1.04);
 }
 
-/* Fallback gradient when no image */
 .wp-bg-fallback {
   position: absolute;
   inset: 0;
